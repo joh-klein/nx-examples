@@ -12,6 +12,7 @@
       "e2eTestRunner": "cypress"
     },
     "@nx/angular:library": {
+      "linter": "eslint",
       "unitTestRunner": "jest"
     },
     "@nx/angular": {
@@ -33,6 +34,9 @@
         "style": "css",
         "linter": "eslint"
       }
+    },
+    "@nx/angular:component": {
+      "style": "css"
     }
   },
   "defaultProject": "products",
@@ -44,6 +48,11 @@
       "cache": true
     },
     "@angular-devkit/build-angular:browser": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "@nx/angular:ng-packagr-lite": {
       "cache": true,
       "dependsOn": ["^build"],
       "inputs": ["production", "^production"]
